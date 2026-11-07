@@ -75,6 +75,7 @@
   <div class="mobile-menu__bottom">
     <a class="btn btn--light" href="#contact">Записаться на бесплатный замер<span class="btn__arrow"><svg><use href="#i-arrow"/></svg></span></a>
     <div class="mobile-menu__msg">
+      <a class="msg-btn glass" data-phone="button" href="#"><svg><use href="#i-phone"/></svg>Позвонить</a>
       <a class="msg-btn glass" data-link="telegram" href="#"><svg><use href="#i-tg"/></svg>Telegram</a>
       <a class="msg-btn glass" data-link="max" href="#"><b>MAX</b></a>
     </div>
@@ -466,8 +467,9 @@
       <div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
       <label class="consent" id="consentLabel">
         <input type="checkbox" name="consent" value="1">
-        <span>Я согласен(на) на обработку персональных данных в соответствии с <a href="policy.html" target="_blank">политикой конфиденциальности</a></span>
+        <span>Я даю <a href="consent.html" target="_blank">согласие на обработку персональных данных</a></span>
       </label>
+      <p class="form__docs">Как мы обрабатываем данные — в <a href="policy.html" target="_blank">политике обработки персональных данных</a></p>
       <button class="btn btn--light" type="submit">Отправить заявку<span class="btn__arrow"><svg><use href="#i-arrow"/></svg></span></button>
       <div class="form__status" id="formStatus" role="status" aria-live="polite"></div>
     </form>
@@ -509,7 +511,11 @@
     </div>
     <div class="footer__bottom">
       <span>© <span id="year">2026</span> МЕРА — мебель на заказ</span>
-      <a href="policy.html">Политика конфиденциальности</a>
+      <nav class="footer__docs" aria-label="Документы">
+        <a href="policy.html">Политика обработки персональных данных</a>
+        <a href="consent.html">Согласие на обработку персональных данных</a>
+        <a href="offer.html">Публичная оферта</a>
+      </nav>
     </div>
   </div>
 </footer>
@@ -520,6 +526,7 @@
 <!-- Плавающая кнопка мессенджеров -->
 <div class="fab is-away" id="fab">
   <div class="fab__links">
+    <a class="glass glass--light" data-phone="button" href="#"><svg><use href="#i-phone"/></svg>Позвонить</a>
     <a class="glass glass--light" data-link="telegram" href="#"><svg><use href="#i-tg"/></svg>Telegram</a>
     <a class="glass glass--light" data-link="max" href="#"><b>MAX</b></a>
   </div>

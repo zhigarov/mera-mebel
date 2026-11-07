@@ -50,6 +50,33 @@ $text = "Новая заявка с сайта\n\n"
       . ($comment !== '' ? "Комментарий: " . $comment . "\n" : '')
       . "\n" . date('d.m.Y H:i');
 
+/* Сначала сохраняем заявку на сервере хостинга (в России) — этого требует закон
+   о локализации персональных данных (ч. 5 ст. 18 152-ФЗ). Заявки лежат в папке leads
+   по месяцам; открыть их можно в файловом менеджере хостинга. По прямой ссылке
+   из интернета они недоступны. Файлы старше года удаляются автоматически —
+   так обещает политика обработки персональных данных. */
+function save_lead($record) {
+    $dir = __DIR__ . '/leads';
+    if (!is_dir($dir) && !@mkdir($dir, 0700)) return false;
+    if (!is_file($dir . '/.htaccess')) @file_put_contents($dir . '/.htaccess', "Require all denied\n");
+    if (!is_file($dir . '/index.php')) @file_put_contents($dir . '/index.php', "<?php http_response_code(404);\n");
+    $file = $dir . '/leads-' . date('Y-m') . '.php';
+    if (!is_file($file)) @file_put_contents($file, "<?php http_response_code(404); exit; ?>\n");
+    $line = json_encode($record, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) . "\n";
+    $ok = @file_put_contents($file, $line, FILE_APPEND | LOCK_EX);
+    foreach (glob($dir . '/leads-*.php') ?: [] as $old) {
+        if (filemtime($old) < strtotime('-11 months')) @unlink($old);
+    }
+    return $ok !== false;
+}
+save_lead([
+    'date'    => date('d.m.Y H:i'),
+    'name'    => $name,
+    'phone'   => $phone,
+    'needs'   => implode(', ', $needs),
+    'comment' => $comment,
+]);
+
 function post_json($url, $payload, $headers = []) {
     $body = json_encode($payload, JSON_UNESCAPED_UNICODE);
     $headers[] = 'Content-Type: application/json';

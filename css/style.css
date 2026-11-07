@@ -196,8 +196,9 @@ p { margin: 0; }
 .menu-open .header__bar { color: var(--ivory); background: transparent; border-color: transparent; box-shadow: none; }
 .mobile-menu a.mobile-menu__link { font: 500 34px/1.25 var(--serif); padding: 6px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
 .mobile-menu__bottom { margin-top: auto; display: grid; gap: 14px; }
-.mobile-menu__msg { display: flex; gap: 10px; }
+.mobile-menu__msg { display: flex; flex-wrap: wrap; gap: 10px; }
 .mobile-menu__msg a { flex: 1; justify-content: center; }
+.mobile-menu__msg a[data-phone] { flex-basis: 100%; }
 
 /* ---------- Первый экран ---------- */
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; color: var(--ivory); overflow: hidden; background: var(--navy-deep); }
@@ -472,6 +473,8 @@ textarea.input { resize: vertical; min-height: 92px; }
 .consent input { width: 18px; height: 18px; margin: 1px 0 0; flex: none; accent-color: var(--sand-2); }
 .consent a { text-decoration: underline; text-underline-offset: 3px; }
 .consent.is-error { color: #F2A3A3; }
+.form__docs { margin: 8px 0 0 30px; font-size: 12.5px; line-height: 1.45; opacity: .65; }
+.form__docs a { text-decoration: underline; text-underline-offset: 3px; }
 .form .btn { width: 100%; margin-top: 22px; justify-content: space-between; }
 .form .btn:disabled { opacity: .6; cursor: wait; transform: none; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
@@ -481,7 +484,7 @@ textarea.input { resize: vertical; min-height: 92px; }
 .form__status a { text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
 
 /* ---------- Подвал ---------- */
-.footer { background: var(--navy-deep); color: rgba(251, 248, 243, .8); padding: 64px 0 32px; border-top: 1px solid rgba(255, 255, 255, .07); }
+.footer { background: var(--navy-deep); color: rgba(251, 248, 243, .8); padding: 64px 0 100px; /* снизу место под плавающие кнопки */ border-top: 1px solid rgba(255, 255, 255, .07); }
 .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
 .footer .logo { color: var(--ivory); }
 .footer__about { margin-top: 18px; max-width: 360px; font-size: 14px; opacity: .75; }
@@ -489,6 +492,33 @@ textarea.input { resize: vertical; min-height: 92px; }
 .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 15px; }
 .footer a:hover { color: var(--ivory); }
 .footer__bottom { margin-top: 54px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, .08); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; opacity: .6; }
+
+.footer__docs { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.footer__docs a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, .3); }
+
+/* ---------- Юридические страницы (политика, согласие, оферта) ---------- */
+.doc-top { position: sticky; top: 0; z-index: 20; background: rgba(243, 236, 227, .88); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(90, 70, 54, .12); }
+.doc-top .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; }
+.doc-top .logo { color: var(--ink); }
+.doc-top .logo__mark { width: 36px; height: 36px; }
+.doc-back { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; color: var(--blue); white-space: nowrap; }
+.doc-back svg { width: 16px; height: 16px; }
+.doc { padding: 48px 0 80px; }
+.doc .container { max-width: 860px; }
+.doc h1 { font-size: clamp(28px, 5vw, 46px); text-transform: uppercase; letter-spacing: .03em; margin: 10px 0 10px; }
+.doc__meta { color: var(--muted); font-size: 14px; }
+.doc h2 { font-size: clamp(22px, 2.6vw, 27px); margin: 38px 0 12px; }
+.doc p, .doc li { color: var(--ink-2); margin: 0 0 10px; }
+.doc ol, .doc ul { padding-left: 22px; margin: 0 0 12px; }
+.doc .fill { background: #FFE9A8; color: var(--ink); padding: 0 4px; border-radius: 4px; }
+.doc__table { overflow-x: auto; margin: 14px 0 22px; }
+.doc table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14px; line-height: 1.5; }
+.doc th, .doc td { border: 1px solid rgba(90, 70, 54, .18); padding: 10px 12px; vertical-align: top; text-align: left; color: var(--ink-2); }
+.doc th { background: rgba(255, 255, 255, .55); color: var(--ink); font-weight: 600; width: 28%; }
+.doc-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 52px; padding-top: 28px; border-top: 1px solid rgba(90, 70, 54, .15); }
+.doc-nav a { padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(90, 70, 54, .18); background: var(--ivory); font-size: 14px; transition: background-color .3s, color .3s; }
+.doc-nav a:hover { border-color: var(--navy); }
+.doc-nav a[aria-current="page"] { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
 
 /* ---------- Плавающая кнопка мессенджеров ---------- */
 /* сам контейнер «прозрачный» для кликов — иначе его невидимая ширина перекрывает кнопку «наверх» */
@@ -501,6 +531,7 @@ textarea.input { resize: vertical; min-height: 92px; }
 .fab__links a svg { width: 18px; height: 18px; }
 .fab.is-open .fab__links a { opacity: 1; transform: none; pointer-events: auto; }
 .fab.is-open .fab__links a:nth-child(2) { transition-delay: .05s; }
+.fab.is-open .fab__links a:nth-child(3) { transition-delay: .1s; }
 .fab__toggle { width: 62px; height: 62px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .3); cursor: pointer; background: var(--navy); color: var(--ivory); display: grid; place-items: center; box-shadow: 0 18px 36px -12px rgba(30, 45, 74, .7); position: relative; }
 .fab__toggle svg { width: 26px; height: 26px; transition: transform .35s var(--ease), opacity .25s; position: absolute; }
 .fab__toggle .fab__x { opacity: 0; transform: rotate(-90deg); }
@@ -526,6 +557,8 @@ textarea.input { resize: vertical; min-height: 92px; }
 [data-reveal].is-in { opacity: 1; transform: none; }
 
 /* ---------- Адаптив ---------- */
+/* на средних экранах номер в шапке не помещается рядом с меню — он есть в контактах и в кнопке связи */
+@media (max-width: 1300px) { .header__phone { display: none; } }
 @media (max-width: 1100px) {
   .nav { display: none; }
   .burger { display: block; }

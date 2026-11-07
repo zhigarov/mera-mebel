@@ -12,7 +12,8 @@
   const phoneHref = (SITE.phone || '').replace(/[^\d+]/g, '');
   $$('[data-phone]').forEach(el => {
     if (!phoneHref) { (el.closest('[data-phone-wrap]') || el).hidden = true; return; }
-    el.textContent = SITE.phone;
+    // data-phone="button" — кнопка со своим текстом («Позвонить»), номер подставляем только в ссылку
+    if (el.dataset.phone !== 'button') el.textContent = SITE.phone;
     el.href = 'tel:' + phoneHref;
   });
   $$('[data-link]').forEach(el => {
