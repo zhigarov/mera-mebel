@@ -495,8 +495,9 @@ textarea.input { resize: vertical; min-height: 92px; }
 
 .footer__docs { display: flex; flex-wrap: wrap; gap: 6px 20px; }
 .footer__docs a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, .3); }
+.footer__note { flex-basis: 100%; margin: 0; }
 
-/* ---------- Юридические страницы (политика, согласие, оферта) ---------- */
+/* ---------- Юридические страницы (политика, согласие) ---------- */
 .doc-top { position: sticky; top: 0; z-index: 20; background: rgba(243, 236, 227, .88); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(90, 70, 54, .12); }
 .doc-top .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; }
 .doc-top .logo { color: var(--ink); }
